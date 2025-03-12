@@ -19,5 +19,5 @@ xhttp.onreadystatechange = function () {
   }
 }
 
-xhttp.open("GET", "/exampleapp/data.json", true)
+xhttp.open("GET", "/04-new_note_diagram/data.json", true)
 xhttp.send()
