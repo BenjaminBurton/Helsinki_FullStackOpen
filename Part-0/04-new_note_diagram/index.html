@@ -11,22 +11,23 @@
     <div class="container"> 
         <h1>University of Helsinki • Full Stack Open Notes</h1>
         <div id="notes"></div>
-        <!-- First Form used doesnt work in live server
+
+        <!-- Form doesnt work on live server
         <form action="" method="POST">
             <input type="text" name="note"><br>
             <input type="submit" value="Save">
         </form> 
         -->
 
-        <!-- Form still doesn't work on Live server 
+        <!-- Form doesnt work on Live server 
         <form action="" method="POST" onsubmit="event.preventDefault(); console.log('Form submitted');">
             <input type="text" name="note"><br>
             <input type="submit" value="Save">
         </form>
         -->
 
-        <!-- Used an preventDefault to stop the POST  -->
-         <!-- the onClick adds the note to the page -->
+        <!-- Used preventDefault to stop the POST  -->
+         <!-- the onClick adds the note to the page but doesnt save the note -->
         <form action="" method="POST" onsubmit="event.preventDefault();">
             <input type="text" name="note" id="noteInput"><br>
             <input type="submit" value="Save" onclick="var input = document.getElementById('noteInput'); var noteText = input.value.trim(); if (noteText) { var ul = document.getElementById('notes').querySelector('ul') || document.createElement('ul'); if (!ul.parentNode) { ul.setAttribute('class', 'notes'); document.getElementById('notes').appendChild(ul); } var li = document.createElement('li'); li.appendChild(document.createTextNode(noteText)); ul.appendChild(li); input.value = '';}">
