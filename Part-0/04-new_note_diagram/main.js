@@ -16,8 +16,10 @@ xhttp.onreadystatechange = function () {
     })
 
     document.getElementById("notes").appendChild(ul)
-  }
+  } else {
+    console.error("Error:", this.status, this.statusText);
 }
+};
 
-xhttp.open("GET", "/04-new_note_diagram/data.json", true)
+xhttp.open("GET", "data.json", true)
 xhttp.send()
