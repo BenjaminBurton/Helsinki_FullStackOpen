@@ -1,8 +1,57 @@
+/* General page styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fa; /* Light, clean background */
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full viewport height */
+}
+
+/* Container for the diagram */
 .container {
-    padding: 10px;
-    border: 1px solid
+  padding: 20px; /* Increased padding for breathing room */
+  border: 1px solid #e0e0e0; /* Softer gray border */
+  border-radius: 10px; /* Rounded corners */
+  background-color: #ffffff; /* White background for contrast */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  max-width: 800px; /* Limit width for readability */
+  width: 100%; /* Responsive width */
+}
+
+/* Styling for notes or text elements */
+.notes {
+  color: #1e90ff; /* A brighter, modern blue */
+  font-size: 1.1em; /* Slightly larger text */
+  line-height: 1.5; /* Better readability */
+  margin: 10px 0; /* Spacing between notes */
+}
+
+/* Enhance Mermaid diagram appearance */
+.mermaid {
+  padding: 15px;
+  background-color: #f9fafb; /* Light gray background for diagram */
+  border-radius: 8px;
+  overflow-x: auto; /* Handle wide diagrams on small screens */
+}
+
+/* Optional: Add a heading style */
+h1 {
+  text-align: center;
+  color: #333; /* Dark gray for contrast */
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .container {
+      padding: 15px;
+      margin: 10px;
   }
-  
-  .notes {
-    color: blue;
+  h1 {
+      font-size: 1.5em;
   }
+}
