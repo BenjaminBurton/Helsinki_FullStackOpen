@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequence Diagram</title>
+</head>
+<body>
+    <div class="mermaid">
+        sequenceDiagram
+            participant browser
+            participant server
+
+            Note right of browser: User types note in text field and clicks Save
+            Note right of browser: Browser operation: Captures input and triggers form submission
+
+            browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/notes
+            activate server
+            Note left of server: Request includes note data (e.g., {"content": "New note", "date": "2025-03-13"})
+            Note left of server: Server operation: Receives request, validates data, saves note to database
+            server-->>browser: 201 Created (with updated note list or success response)
+            deactivate server
+
+            Note right of browser: Browser operation: Receives response, processes success status
+
+            browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+            activate server
+            Note left of server: Server operation: Retrieves updated note list from database
+            server-->>browser: [{ "content": "New note", "date": "2025-03-13" }, ... ]
+            deactivate server
+
+            Note right of browser: Browser operation: Parses JSON and re-renders the notes list
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+</body>
+</html>
