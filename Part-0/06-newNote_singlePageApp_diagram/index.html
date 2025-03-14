@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="main.css" />
+
+    <!-- Added the defer tag to ensure the script runs after the HTML is -->
+    <script type="text/javascript" src="main.js" defer></script>
+    
+    <title>Single Page App SPA</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Notes -- Single Page App</h1>
+        <div id="notes"></div>
+        <div>
+            <form id="notes_form">
+                <input type="text" name="note" placeholder="Enter a new note" required><br>
+                <input type="submit" value="Save">
+            </form>
+        </div>
+        <div class="mermaid">
+            sequenceDiagram
+                participant browser
+                participant server
+
+                Note right of browser: User types note in text field and clicks Save
+                Note right of browser: Browser operation: Form onsubmit event triggers, prevents default
+
+                Note right of browser: Browser operation: Creates note object {content: "New note", date: "2025-03-13"}
+                Note right of browser: Browser operation: Adds note to 'notes' array, clears input, calls redrawNotes()
+                Note right of browser: Browser operation: Dynamically updates DOM with new note
+
+                browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+                activate server
+                Note left of server: Request includes note data (e.g., {"content": "New note", "date": "2025-03-13"})
+                Note left of server: Server operation: Receives request, saves note to database
+                server-->>browser: 201 Created (success response)
+                deactivate server
+
+                Note right of browser: Browser operation: Logs response to console (no further UI update)
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+</body>
+</html>

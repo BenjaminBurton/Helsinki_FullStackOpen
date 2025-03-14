@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <script type="text/javascript" src="main.js"></script>
+    <title>Single Page App SPA</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Notes -- single page app</h1>
+        <div id="notes">
+            <ul class="notes">
+                <li>San Francisco</li>
+                <li>New York</li>
+            </ul>
+        </div>
+        <div>
+            <form id="notes_form">
+                <input type="text" name="note"><br>
+                <input type="submit" value="Save">
+            </form>
+        </div>
+        <!-- Fixed Mermaid diagram -->
+        <div class="mermaid">
+            sequenceDiagram
+                participant browser
+                participant server
+
+                Note right of browser: User navigates to the SPA at https://studies.cs.helsinki.fi/exampleapp/spa
+                browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+                activate server
+                Note left of server: Server operation: Serves the SPA HTML file
+                server-->>browser: HTML document (with embedded JS)
+                deactivate server
+
+                Note right of browser: Browser operation: Loads HTML and executes embedded JavaScript
+
+                browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+                activate server
+                Note left of server: Server operation: Retrieves notes from database
+                server-->>browser: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
+                deactivate server
+
+                Note right of browser: Browser operation: Parses JSON, updates 'notes' array, calls redrawNotes()
+                Note right of browser: Browser operation: Dynamically renders notes list in the DOM
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+</body>
+</html>
